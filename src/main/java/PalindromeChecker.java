@@ -6,7 +6,7 @@ public class PalindromeChecker {
 public void tester()
 {
   //String lines[] = loadStrings("palindromes.txt");
-  String[] lines = new String[6]; 
+  String[] lines = new String[6];
     try{
         File myFile = new File("palindromes.txt");
         Scanner myReader = new Scanner(myFile);
@@ -37,13 +37,29 @@ public void tester()
 }
 public boolean palindrome(String word)
 {
-  //your code here
+   String str=noCapitals(onlyLetters(word));
+ 
+ if(reverse(str).equals(str))
+ return true;
   return false;
 }
 public String reverse(String str)
 {
-    String sNew = new String();
-    //your code here
+     String sNew = new String();
+    for(int i=str.length();i>0;i--){
+    sNew=sNew+str.substring(i-1,i);
+  }
     return sNew;
+}
+  public static String noCapitals(String sWord){
+  return sWord.toLowerCase();
+}
+  public static String onlyLetters(String sString){
+  String Let="";
+  for(int i=0;i<sString.length();i++){
+    if(Character.isLetter(sString.charAt(i))==true)
+    Let=Let+sString.substring(i,i+1);
+  }
+  return Let;
 }
 }
